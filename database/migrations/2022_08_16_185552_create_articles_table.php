@@ -15,9 +15,16 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')
+            ->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->string('title');
-            $table->longText('body')->nullable()->default('text');
+            $table->longText('body');
             $table->string('image')->nullable();
+            $table->integer('likes')->nullable()->default(0);
+            $table->integer('dislikes')->nullable()->default(0);
+            $table->integer('views')->nullable()->default(0);
             $table->timestamps();
         });
     }

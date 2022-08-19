@@ -19,14 +19,11 @@ class UserController extends Controller
 
     public function authenticate(Request $request) {
         $credentials = $request->only('email', 'password');
-
         if(auth()->attempt($credentials)){
             $request->session()->regenerate();
             return redirect('/')->with('success', ' loggedIn successfully');
         }
-
-        return back()->withErrors(['email' => 'Invalid credentials'])->onlyInput('email');
-
+        return back()->withErrors(['login' => 'Invalid credentials'])->onlyInput('login');
     }
 
     

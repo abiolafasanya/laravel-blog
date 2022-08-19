@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Articles;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreArticlesRequest;
 use App\Http\Requests\UpdateArticlesRequest;
 
@@ -44,7 +45,9 @@ class ArticlesController extends Controller
      */
     public function store(StoreArticlesRequest $request)
     {
+        // dd(Auth::id());
         $articles = $request->all();
+        $articles['user_id'] = Auth::id();
         if($request->hasFile('image')){
             $articles['image'] = $request->file('image')->store('articles', 'public');
         }

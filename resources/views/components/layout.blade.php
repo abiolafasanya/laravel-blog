@@ -7,10 +7,10 @@
 
     <title>Wunmi Blog</title>
     @vite('resources/js/app.js')
-
+    @livewireStyles
 </head>
 
-<body class="antialiased  bg-gray-50 font-sans relative">
+<body class="antialiased bg-gray-50 font-sans relative">
     <x-header />
     <main class="min-h-[100vh]">
         <x-success />
@@ -21,7 +21,7 @@
     </footer>
 
 
-    {{-- <script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script> --}}
+    @livewireScripts
     <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
 </body>
 

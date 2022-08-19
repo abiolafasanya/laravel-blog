@@ -20,9 +20,9 @@ Route::get('/', function () {
 })->name('home');
 
 Route::controller(UserController::class)->group(function () {
-    Route::get('/login', 'login')->name('login');
+    Route::get('/login', 'login')->name('login')->middleware('guest');
     Route::post('/authenticate', 'authenticate')->name('signin');
-    Route::get('/register', 'register')->name('register');
+    Route::get('/register', 'register')->name('register')->middleware('guest');
     Route::post('/signup', 'signup')->name('signup');
     Route::get('/logout', 'logout')->name('logout');
 });
