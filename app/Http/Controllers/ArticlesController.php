@@ -16,7 +16,7 @@ class ArticlesController extends Controller
     public function index()
     {
         $views = 0;
-        
+
         $articles = Articles::latest()->paginate(5);
         return view('articles.index', ['articles' => $articles, 'views' => $views+1]);
         // return "View Article";
@@ -80,8 +80,7 @@ class ArticlesController extends Controller
     {
         $article->update($request->all());
       
-        return redirect()->route('articles.index')
-                        ->with('success','Article updated successfully');
+        return back()->with('success','Article updated successfully');
     }
 
     /**
