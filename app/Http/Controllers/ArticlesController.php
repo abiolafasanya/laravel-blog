@@ -30,10 +30,10 @@ class ArticlesController extends Controller
     public function create()
     {
         //
-        if(Auth::check()){
+        if(auth()->user()){
             return view('articles.create');
         }
-        return back();
+        return back()->with('success', 'You need to signin first');
     }
 
     /**
@@ -72,7 +72,10 @@ class ArticlesController extends Controller
      */
     public function edit(Articles $article)
     {
-        return view('articles.edit', ['article' => $article]);
+        if(auth()->user()){
+            return view('articles.edit', ['article' => $article]);
+        }
+        return back();
     }
 
     /**
