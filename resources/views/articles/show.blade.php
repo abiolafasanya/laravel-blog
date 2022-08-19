@@ -2,9 +2,12 @@
     <section class="container mx-auto mt-5 p-5 max-w-6xl">
 
         <h1 class="p-5 text-2xl font-bold">Show Articles</h1>
+        <div>
+        </div>
         <article class="card mt-10 p-5">
+            <img src="{{asset('storage/'.$article->image)}}" alt="" class="w-full">
             <h1 class="text-xl capitalize text-black">{{ $article->title }}</h1>
-            <p class="text-base">{{ $article->body }}</p>
+            <p class="text-base">{!! $article->body !!}</p>
             <div class="flex justify-between">
                 <span>created by: abiola</span>
                 <span class="text-sm">

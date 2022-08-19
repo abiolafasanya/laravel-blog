@@ -8,12 +8,29 @@
                 <div class="my-2">
                     <label for="title">Title</label>
                     <input type="text" name="title" class="form-control" value="{{ $article->title }}">
+                    @error('title')
+                        <x-error :message="$message" />
+                    @enderror
                 </div>
                 <div class="my-2">
                     <label for="body">Body</label>
-                    <input type="text" name="body" class="form-control" value="{{ $article->body }}">
+                    <textarea class="ckeditor form-control" id="body" name="body">{{ $article->body }}</textarea>
+                    @error('body')
+                        <x-error :message="$message" />
+                    @enderror
                 </div>
-                <button class="btn btn-indigo">Create Post</button>
+                <div class="my-2">
+                    <div class="my-2 w-56 rounded">
+                        <img src="{{ asset('storage/'.$article->image) }}" alt="" class="w-[256px]">
+                    </div>
+                    <label for="image">Image</label>
+                    <input type="file" name="image" class="form-control">
+
+                    @error('image')
+                        <x-error :message="$message" />
+                    @enderror
+                </div>
+                <button class="btn btn-indigo">Edit Article</button>
             </div>
         </form>
     </div>

@@ -10,7 +10,7 @@
 
 </head>
 
-<body class="antialiased font-sans relative">
+<body class="antialiased  bg-gray-50 font-sans relative">
     <x-header />
     <main class="min-h-[100vh]">
         <x-success />
@@ -19,6 +19,10 @@
     <footer class=" w-full relative bottom-0 bg-gray-100">
         <div id="footer" class="text-center p-2 border-t border-gray-200"></div>
     </footer>
+
+
+    {{-- <script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script> --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
 </body>
 
 </html>

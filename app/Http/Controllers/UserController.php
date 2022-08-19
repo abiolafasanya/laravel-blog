@@ -12,19 +12,68 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function login()
     {
-        // return 
+        return view('auth.login');
     }
+
+    public function authenticate(Request $request) {
+        $credentials = $request->only('email', 'password');
+
+        if(auth()->attempt($credentials)){
+            $request->session()->regenerate();
+            return redirect('/')->with('success', ' loggedIn successfully');
+        }
+
+        return back()->withErrors(['email' => 'Invalid credentials'])->onlyInput('email');
+
+    }
+
+    
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function register()
+    {
+        return view('auth.register');
+    }
+
+     /**
+     * Signup the form for editing the specified resource.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function signup(Request $request)
+    {
+        $formInput = $request->validate([
+            "name" => "required|min:3", 
+            "email" => "required|email|unique:users,email",
+            "password" => "required|confirmed|min:6"
+        ]);
+        $formInput['password'] = bcrypt($formInput['password']);
+        User::create($formInput);
+
+        return redirect('/login')->with('success', 'User registration successfull you can now login');
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function logout(Request $request)
     {
-        //
+        auth()->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return \redirect('/')->with('success', 'You have successfully loggedOut');
     }
 
     /**
@@ -34,28 +83,6 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreUserRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
     {
         //
     }

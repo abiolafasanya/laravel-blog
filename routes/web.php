@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArticlesController;
 
 /*
@@ -18,13 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
-
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
+Route::controller(UserController::class)->group(function () {
+    Route::get('/login', 'login')->name('login');
+    Route::post('/authenticate', 'authenticate')->name('signin');
+    Route::get('/register', 'register')->name('register');
+    Route::post('/signup', 'signup')->name('signup');
+    Route::get('/logout', 'logout')->name('logout');
+});
 
 Route::get('/posts', function () {
     return "hello post";
@@ -37,10 +38,5 @@ Route::get('/library', function () {
 Route::get('/profile', function () {
     return "hello post";
 })->name('profile');
-
-Route::get('/logout', function () {
-    return "hello logout";
-})->name('logout');
-
 
 Route::resource('articles', ArticlesController::class);

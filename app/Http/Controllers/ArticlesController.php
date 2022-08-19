@@ -30,7 +30,10 @@ class ArticlesController extends Controller
     public function create()
     {
         //
-        return view('articles.create');
+        if(Auth::check()){
+            return view('articles.create');
+        }
+        return back();
     }
 
     /**
@@ -42,6 +45,9 @@ class ArticlesController extends Controller
     public function store(StoreArticlesRequest $request)
     {
         $articles = $request->all();
+        if($request->hasFile('image')){
+            $articles['image'] = $request->file('image')->store('articles', 'public');
+        }
         Articles::create($articles);
         return redirect('/articles')->with('success', 'Article successfully added');
     }
