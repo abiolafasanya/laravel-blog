@@ -15,7 +15,11 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        return view('articles.index');
+        $views = 0;
+        
+        $articles = Articles::latest()->paginate(5);
+        return view('articles.index', ['articles' => $articles, 'views' => $views+1]);
+        // return "View Article";
     }
 
     /**
@@ -26,6 +30,7 @@ class ArticlesController extends Controller
     public function create()
     {
         //
+        return view('articles.create');
     }
 
     /**
@@ -36,7 +41,9 @@ class ArticlesController extends Controller
      */
     public function store(StoreArticlesRequest $request)
     {
-        //
+        $articles = $request->all();
+        Articles::create($articles);
+        return redirect('/articles')->with('success', 'Article successfully added');
     }
 
     /**
@@ -45,9 +52,10 @@ class ArticlesController extends Controller
      * @param  \App\Models\Articles  $articles
      * @return \Illuminate\Http\Response
      */
-    public function show(Articles $articles)
+    public function show(Articles $article)
     {
-        //
+        // dd($articles);
+        return view('articles.show', ['article' => $article]);
     }
 
     /**
@@ -56,9 +64,9 @@ class ArticlesController extends Controller
      * @param  \App\Models\Articles  $articles
      * @return \Illuminate\Http\Response
      */
-    public function edit(Articles $articles)
+    public function edit(Articles $article)
     {
-        //
+        return view('articles.edit', ['article' => $article]);
     }
 
     /**
@@ -68,9 +76,12 @@ class ArticlesController extends Controller
      * @param  \App\Models\Articles  $articles
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateArticlesRequest $request, Articles $articles)
+    public function update(UpdateArticlesRequest $request, Articles $article)
     {
-        //
+        $article->update($request->all());
+      
+        return redirect()->route('articles.index')
+                        ->with('success','Article updated successfully');
     }
 
     /**
@@ -79,8 +90,11 @@ class ArticlesController extends Controller
      * @param  \App\Models\Articles  $articles
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Articles $articles)
+    public function destroy(Articles $article)
     {
-        //
+        $article->delete();
+       
+        return redirect()->route('articles.index')
+                        ->with('success','Article deleted successfully');
     }
 }

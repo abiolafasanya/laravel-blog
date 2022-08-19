@@ -30,10 +30,6 @@ Route::get('/posts', function () {
     return "hello post";
 })->name('posts');
 
-Route::get('/articles', function () {
-    return "hello article";
-})->name('articles');
-
 Route::get('/library', function () {
     return "hello library";
 })->name('library');
@@ -47,6 +43,4 @@ Route::get('/logout', function () {
 })->name('logout');
 
 
-// Route::resource('aritcles', ArticlesController::class);
-// Route::resource('post', PostsController::class)->name('posts');
-// Route::controller('users', 'UserController');
+Route::resource('articles', ArticlesController::class);

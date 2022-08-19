@@ -4,7 +4,8 @@
         <ul class="hidden md:flex items-center justify-center space-x-8">
             <li><a href="{{ route('home') }}">Home</a></li>
             <li><a href="{{ route('posts') }}">Posts</a></li>
-            <li><a href="{{ route('articles') }}">Articles</a></li>
+            {{-- <li><a href="articles">Articles</a></li> --}}
+            <li><a href="{{ route('articles.index') }}">Articles</a></li>
             <li><a href="{{ route('library') }}">Library</a></li>
         </ul>
 
@@ -27,7 +28,7 @@
             class="md:hidden absolute left-0 h-screen space-y-14 text-2xl flex flex-col w-full bg-slate-300 items-center justify-center">
             <li><a href="{{ route('home') }}">Home</a></li>
             <li><a href="{{ route('posts') }}">Posts</a></li>
-            <li><a href="{{ route('articles') }}">Articles</a></li>
+            <li><a href="{{route('articles.index')}}">Articles</a></li>
             <li><a href="{{ route('library') }}">Library</a></li>
         </ul>
     </div>

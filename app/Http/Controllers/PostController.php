@@ -15,7 +15,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        return response->json('index page')
+        $posts = [
+            "recent" => [["id" => 1, "title" => "post one"], ["id" => 2, "title" => "post two"]],
+            "old" => [["id" => 1, "title" => "post one"], ["id" => 2, "title" => "post two"]]
+        ];
+
+        return response()->json($posts, 200);
     }
 
     /**

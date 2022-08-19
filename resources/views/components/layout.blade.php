@@ -13,7 +13,7 @@
 <body class="antialiased font-sans relative">
     <x-header />
     <main class="min-h-[100vh]">
-        {{-- @yield('content') --}}
+        <x-success />
         {{ $slot }}
     </main>
     <footer class=" w-full relative bottom-0 bg-gray-100">
