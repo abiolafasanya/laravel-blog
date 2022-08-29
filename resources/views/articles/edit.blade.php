@@ -21,7 +21,7 @@
                 </div>
                 <div class="my-2">
                     <div class="my-2 w-56 rounded">
-                        <img src="{{ asset('storage/'.$article->image) }}" alt="" class="w-[256px]">
+                        <img src="{{ asset('storage/' . $article->image) }}" alt="" class="w-[256px]">
                     </div>
                     <label for="image">Image</label>
                     <input type="file" name="image" class="form-control">
@@ -30,7 +30,20 @@
                         <x-error :message="$message" />
                     @enderror
                 </div>
-                <button class="btn btn-indigo">Edit Article</button>
+                <div class="my-2">
+                    <label for="Category">Category</label>
+                    <select name="category" class="form-control">
+                        <option value="">Select Category</option>
+                        <option value="">Category 1</option>
+                        <option value="">Category 2</option>
+                        <option value="">Category 3</option>
+                        <option value="">Category 4</option>
+                        {{-- @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach --}}
+                    </select>
+                </div>
+                <button class="btn btn-indigo">Update Article</button>
             </div>
         </form>
     </div>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArticlesController;
 
@@ -25,6 +26,7 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/register', 'register')->name('register')->middleware('guest');
     Route::post('/signup', 'signup')->name('signup');
     Route::get('/logout', 'logout')->name('logout');
+    Route::get('/verify', 'verification')->name('verify');
 });
 
 Route::get('/posts', function () {
@@ -40,3 +42,7 @@ Route::get('/profile', function () {
 })->name('profile');
 
 Route::resource('articles', ArticlesController::class);
+
+Route::controller(NewsController::class)->group(function () {
+    Route::get('/news', 'index')->name('news');
+});

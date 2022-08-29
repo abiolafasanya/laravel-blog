@@ -1,12 +1,10 @@
-<x-layout>
-    <div
-        class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+<x-guest>
+    <div class="py-4">
+        <div class="card max-w-2xl mx-auto p-3 mt-12">
+            <div class="py-3 px-5">
+                <h2 class="text-2xl font-semibold my-4 text-center capitalize text-gray-800 mb-2">Register Form</h2>
 
-        <div class="card px-12">
-            <div class="p-8">
-                <h2 class="text-2xl font-semibold py-4 text-center capitalize text-gray-800 mb-2">Register Form</h2>
-
-                <form action="{{ route('signup') }}" method="post" class="w-full block">
+                <form action="{{ route('signup') }}" method="post" class="">
                     @csrf
                     <div class="mt-2">
                         <label for="name" class="block">Name</label>
@@ -55,4 +53,4 @@
         </div>
 
     </div>
-</x-layout>
+</x-guest>

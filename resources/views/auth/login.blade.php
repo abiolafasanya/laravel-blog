@@ -1,8 +1,6 @@
-<x-layout>
-    <div
-        class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-
-        <div class="card px-12">
+<x-guest>
+    <div>
+        <div class="card max-w-2xl mx-auto p-5 mt-12">
             <div class="p-8">
                 <h2 class="text-2xl font-semibold py-4 text-center capitalize text-gray-800 mb-2">Login Form</h2>
                 @error('login')
@@ -41,4 +39,4 @@
         </div>
 
     </div>
-</x-layout>
+</x-guest>

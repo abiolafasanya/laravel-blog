@@ -6,7 +6,7 @@
         </div>
         <article class="card mt-10 p-5">
             <img src="{{asset('storage/'.$article->image)}}" alt="" class="w-full">
-            <h1 class="text-xl capitalize text-black">{{ $article->title }}</h1>
+            <h1 class="text-2xl my-2 capitalize text-black">{{ $article->title }}</h1>
             <p class="text-base">{!! $article->body !!}</p>
             <div class="flex justify-between">
                 <span>created by: abiola</span>

@@ -1,5 +1,5 @@
-<header class=" bg-gray-100 border-b border-gray-200 py-3 px-7">
-    <nav class="flex justify-between items-center text-lg">
+<header class="bg-white px-7 border-b py-2 mx-auto" x-data="{ open: false }" @click.away="open = false">
+    <nav class="flex justify-between items-center text-lg p-3">
         <span class="text-2xl font-sans">WumBlog</span>
         <ul class="hidden md:flex items-center justify-center space-x-8">
             <li><a href="{{ route('home') }}">Home</a></li>
@@ -8,14 +8,20 @@
             <li><a href="{{ route('library') }}">Library</a></li>
         </ul>
         <div>
-            <span id="userMenu" class="md:flex items-center hidden relative cursor-pointer ">
+            {{-- <span id="userMenu" class="md:flex items-center hidden relative cursor-pointer" x-data="isOpen = true"> --}}
+            <span class="md:flex items-center hidden relative cursor-pointer">
                 @auth
-                    <i class="fa-solid fa-user-astronaut"></i>
+                    <span class="rounded-full py-1 px-2 border border-indigo-500" x-on:click="open = !open"
+                        @keydown.enter="open = true" @keydown.tab="open = false">
+                        <x-nameicon />
+                    </span>
                     <span class="ml-2 text-base">{{ auth()->user()->name }}</span>
                 @else
-                    <ul class="text-gray-700 flex text-base">
+                    <ul class="text-gray-700 flex space-x-4">
                         <li><a href="{{ route('login') }}" class="hover:text-gray-900 py-2 ">Login</a></li>
-                        <li><a href="{{ route('register') }}" class="hover:text-gray-900 px-5 py-2">Register</a></li>
+                        <li><a href="{{ route('register') }}"
+                                class="bg-indigo-500 text-sm hover:bg-indigo-600 rounded-full text-white px-5 py-2">Register</a>
+                        </li>
                     </ul>
                 @endauth
             </span>
@@ -24,16 +30,10 @@
     </nav>
     <div>
         @auth
-            <ul id="showMenu"
-                class="hidden top-14 bg-white absolute p-4 right-[35px] flex-col rounded shadow-md text-gray-700">
+            <ul class="flex mt-[10px] bg-white absolute p-4 right-[35px] flex-col rounded shadow-md text-gray-700"
+                x-show="open" @click.outside="open = false" @keydown.escape.window="open = false" @keydown.tab="open = false">
                 <li><a href="{{ route('profile') }}" class="hover:text-gray-900 px-5 py-2">Profile</a></li>
                 <li><a href="{{ route('logout') }}" class="hover:text-gray-900 px-5 py-2">Logout</a></li>
-            </ul>
-        @else
-            <ul id="showMenu"
-                class="hidden top-14 bg-white absolute p-4 right-[35px] flex-col rounded shadow-md text-gray-700">
-                <li><a href="{{ route('login') }}" class="hover:text-gray-900 px-5 py-2 ">Login</a></li>
-                <li><a href="{{ route('register') }}" class="hover:text-gray-900 px-5 py-2">Register</a></li>
             </ul>
         @endauth
         {{-- mobile --}}

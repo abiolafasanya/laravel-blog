@@ -24,7 +24,7 @@
                                     {{ $article->created_at }}
                                 </span>
                             </div>
-                            <div class="flex justify-between items-center">
+                            <div class="flex justify-between items-center mt-4">
                                 @livewire('counter')
                                 <a class="link border border-indigo-500 rounded-lg p-3"
                                     href="{{ route('articles.show', $article->id) }}">

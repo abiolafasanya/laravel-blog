@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Mail;
+use App\Mail\NotifyMail;
+ 
 
 class UserController extends Controller
 {
@@ -56,7 +59,15 @@ class UserController extends Controller
         return redirect('/login')->with('success', 'User registration successfull you can now login');
     }
 
-
+    public function verification(Request $request){
+        $email = $request->validate(['email' => 'email']);
+        Mail::to($email)->send(new NotifyMail());
+        if (Mail::failures()) {
+            return response()->Fail('Sorry! Please try again latter');
+       }else{
+            return response()->success('Great! Successfully send in your mail');
+          }
+     } 
 
     /**
      * Show the form for creating a new resource.
