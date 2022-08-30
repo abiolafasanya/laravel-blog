@@ -1,17 +1,4 @@
-@foreach ($trendings as $trending)
-    <div class="py-2 px-5 bg-white rounded border">
-        <img src="{{ $trending['urlToImage'] }}" class="rounded" alt="">
-        <h1 class="text-lg font-semibold">{{ $trending['title'] }}</h1>
-        <p class="text-base text-black">
-            {{ $trending['description'] }}
-        </p>
-        <span class="text-sm font-semibold text-dark">Source: {{$trending['source']['name']}}</span>
-        <span class="flex justify-between mt-4">
-            <a href="{{ $trending['url'] }}" class="text-indigo-600">Learn more...</a>
-            <span class="text-gray-700">
-                <i class="fa-solid fa-clock" aria-hidden="true"></i>
-                <span>{{ isset($trending['publishedAt']) ? \Carbon\Carbon::parse($trending['publishedAt'])->format('M d,Y g:i a') : 'No date' }}</span>
-            </span>
-        </span>
-    </div>
-@endforeach
+<div class="flex space-x-8">
+    <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Let&#39;s make this TREND this night!<br><br>It won&#39;t take you 2 seconds to retweet.<a href="https://twitter.com/hashtag/ASUU?src=hash&amp;ref_src=twsrc%5Etfw">#ASUU</a><a href="https://twitter.com/hashtag/ASUUStrikeMustEnd?src=hash&amp;ref_src=twsrc%5Etfw">#ASUUStrikeMustEnd</a> <a href="https://t.co/DvjDWdFh18">pic.twitter.com/DvjDWdFh18</a></p>&mdash; ASUU UPDATES (@ASUU_NIG_) <a href="https://twitter.com/ASUU_NIG_/status/1564351645722501120?ref_src=twsrc%5Etfw">August 29, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Delta airline suspends New York to Lagos flights -<br><br>Mercy • Lekki • <a href="https://twitter.com/hashtag/Phyna%F0%93%83%B5?src=hash&amp;ref_src=twsrc%5Etfw">#Phyna𓃵</a> • Cristiano Ronaldo • <a href="https://twitter.com/hashtag/ASUUStrikeMustEnd?src=hash&amp;ref_src=twsrc%5Etfw">#ASUUStrikeMustEnd</a> • City and Liverpool <a href="https://t.co/5sLyQgEFEu">pic.twitter.com/5sLyQgEFEu</a></p>&mdash; TWAA.ng (@TWAA_ng) <a href="https://twitter.com/TWAA_ng/status/1564536808607719424?ref_src=twsrc%5Etfw">August 30, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>

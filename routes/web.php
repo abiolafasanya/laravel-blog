@@ -16,9 +16,9 @@ use App\Http\Controllers\ArticlesController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
 
 Route::controller(UserController::class)->group(function () {
     Route::get('/login', 'login')->name('login')->middleware('guest');
@@ -44,5 +44,6 @@ Route::get('/profile', function () {
 Route::resource('articles', ArticlesController::class);
 
 Route::controller(NewsController::class)->group(function () {
-    Route::get('/news', 'index')->name('news');
+    Route::get('/', 'index')->name('home');
+    Route::get('/news', 'news')->name('news');
 });
