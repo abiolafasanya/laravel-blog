@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Wunmi Blog</title>
+    <title>{{config('app.name') }}</title>
     @vite('resources/css/app.css')
     @livewireStyles
 </head>
@@ -14,7 +14,7 @@
     <header class="bg-white px-7 border-b py-2 mx-auto">
         <div class="p-3 flex items-center justify-between">
             <div class="logo ">
-                <a href="{{ route('home') }}" class="text-2xl">WunmiBlog</a>
+                <a href="{{ route('home') }}" class="text-2xl">{{config('app.name') }}</a>
             </div>
             <div class="menu">
                 <a href="{{ route('login') }}" class="py-2 px-5 text-gray-800">Login</a>

@@ -1,6 +1,6 @@
 <header class="bg-white px-7 border-b py-2 mx-auto" x-data="{ open: false }" @click.away="open = false">
     <nav class="flex justify-between items-center text-lg p-3">
-        <span class="text-2xl font-sans">WumBlog</span>
+        <span class="text-2xl font-sans">{{config('app.name')}}</span>
         <ul class="hidden md:flex items-center justify-center space-x-8">
             <li><a href="{{ route('home') }}">Home</a></li>
             <li><a href="{{ route('posts') }}">Posts</a></li>
