@@ -38,10 +38,9 @@
                     </div>
                 @endforeach
             </div>
-            <div>
+            <div class="p-2">
                 {!! $trendings->links() !!}
             </div>
-            {{-- <livewire:trending /> --}}
         </div>
         <div>
         </div>
