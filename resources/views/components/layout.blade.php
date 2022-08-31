@@ -20,8 +20,8 @@
     </main>
 
     <footer class="py-3 px-5 mx-auto mt-12">
-        <p class="text-center p--3">
-            WunmiBlog &copy; 2022
+        <p class="text-center p-3">
+            &copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.
         </p>
     </footer>
 
