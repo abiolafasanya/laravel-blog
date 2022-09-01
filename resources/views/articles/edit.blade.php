@@ -1,6 +1,6 @@
 <x-layout>
     <div class="max-w-6xl mx-auto mt-12 p-5">
-        <form action="{{ route('articles.update', $article->id) }}" method="POST">
+        <form action="{{ route('articles.update', $article->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="card max-w-2xl mx-auto p-5 mt-12">
@@ -33,11 +33,15 @@
                 <div class="my-2">
                     <label for="Category">Category</label>
                     <select name="category" class="form-control">
-                        <option value="">Select Category</option>
-                        <option value="">Category 1</option>
-                        <option value="">Category 2</option>
-                        <option value="">Category 3</option>
-                        <option value="">Category 4</option>
+                        <option disabled >Select Category</option>
+                        <option value="general" selected>General</option>
+                        <option value="business">Business</option>
+                        <option value="education">Education</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="culture">Culture</option>
+                        <option value="science">Science</option> & Tech</option>
+                        <option value="nature">Nature</option>
+                        <option value="politics">Politics</option>
                         {{-- @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach --}}

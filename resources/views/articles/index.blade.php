@@ -3,7 +3,9 @@
 
         <div class="flex justify-between items-center p-5">
             <h1 class="text-2xl">Articles</h1>
-            <a href="{{ route('articles.create') }}" class="btn btn-indigo">Add Article</a>
+            @auth
+                <a href="{{ route('articles.create') }}" class="btn btn-indigo">Add Article</a>
+            @endauth
         </div>
         @if ($articles->count() < 1)
             <div class="alert text-dark max-w-6xl md:max-w-xl text-center mx-auto bg-gray-200 border border-gray-300"><i
@@ -18,7 +20,7 @@
                             <h1 class="text-xl">{{ $article->title }}</h1>
                             <p class="text-lead capitalize">{!! $article->body !!}</p>
                             <div class="flex justify-between">
-                                <span>created by: abiola</span>
+                                <span>Article by: {{ $article->user->name }}</span>
                                 <span class="text-sm">
                                     <i class="fa fa-clock-o" aria-hidden="true"></i>
                                     {{ $article->created_at }}

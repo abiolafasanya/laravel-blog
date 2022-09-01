@@ -43,6 +43,6 @@ class User extends Authenticatable
     ];
 
     public function article() {
-        return $this->hasMany(Articles::class, 'user_id');
+        return $this->hasMany(Articles::class);
     }
 }

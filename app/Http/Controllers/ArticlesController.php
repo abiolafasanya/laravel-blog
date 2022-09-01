@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Articles;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreArticlesRequest;
@@ -18,9 +19,11 @@ class ArticlesController extends Controller
     {
         $views = 0;
 
-        $articles = Articles::latest()->paginate(5);
+        // $articles = Articles::with('user')->get();
+        // $articles = Articles::find(auth()->id());
+        
+        $articles = Articles::latest()->with('user')->paginate(5);
         return view('articles.index', ['articles' => $articles, 'views' => $views+1]);
-        // return "View Article";
     }
 
     /**
@@ -90,9 +93,18 @@ class ArticlesController extends Controller
      */
     public function update(UpdateArticlesRequest $request, Articles $article)
     {
-        $article->update($request->all());
-      
-        return back()->with('success','Article updated successfully');
+        
+        if(Auth::id() == $article->user_id){
+            if($request->hasFile('image')){
+                $article['image'] = $request->file('image')->store('articles', 'public');
+            }
+            $article['title'] = $request->input('title');
+            $article['body'] = $request->input('body');
+
+            $article->update();
+            return back()->with('success','Article updated successfully');
+        }
+        return back()->withErrors('Error updating article');
     }
 
     /**

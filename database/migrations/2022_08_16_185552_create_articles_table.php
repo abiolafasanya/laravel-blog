@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('title');
             $table->longText('body');
             $table->string('image')->nullable();
+            $table->string('categories')->nullable();
             $table->integer('likes')->nullable()->default(0);
             $table->integer('dislikes')->nullable()->default(0);
             $table->integer('views')->nullable()->default(0);

@@ -1,5 +1,4 @@
-<header class="bg-white px-7 border-b py-2 mx-auto" x-data="{ isOpen: false }" x-data="{ open: false }"
-    @click.away="open = false">
+<header class="bg-white px-7 border-b py-2 mx-auto" x-data="{ isOpen: false, open: false }" @click.away="open = false">
     <nav class="flex justify-between items-center text-lg p-3">
         <span class="text-2xl font-sans">{{ config('app.name') }}</span>
         <ul class="hidden md:flex items-center justify-center space-x-8">

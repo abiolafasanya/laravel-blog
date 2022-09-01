@@ -7,7 +7,6 @@
 
     <title>{{ config('app.name') }}</title>
     @vite('resources/css/app.css')
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @livewireStyles
 </head>
 
@@ -26,6 +25,7 @@
     </footer>
 
 
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
     <script>
         ClassicEditor.create(document.querySelector("#body"))
