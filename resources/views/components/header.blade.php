@@ -3,9 +3,9 @@
         <span class="text-2xl font-sans">{{ config('app.name') }}</span>
         <ul class="hidden md:flex items-center justify-center space-x-8">
             <li><a href="{{ route('home') }}">Home</a></li>
-            <li><a href="{{ route('posts') }}">Posts</a></li>
+            <li><a href="{{ route('academics') }}">Academics</a></li>
             <li><a href="{{ route('articles.index') }}">Articles</a></li>
-            <li><a href="{{ route('library') }}">Library</a></li>
+            <li><a href="{{ route('libraries') }}">Library</a></li>
         </ul>
         <div>
             {{-- <span id="userMenu" class="md:flex items-center hidden relative cursor-pointer" x-data="isOpen = true"> --}}
@@ -43,9 +43,9 @@
         <ul x-show="isOpen"
             class="md:hidden absolute left-0 h-screen space-y-14 text-2xl flex flex-col w-full bg-slate-300 items-center justify-center">
             <li><a href="{{ route('home') }}">Home</a></li>
-            <li><a href="{{ route('posts') }}">Posts</a></li>
+            <li><a href="{{ route('academics') }}">Posts</a></li>
             <li><a href="{{ route('articles.index') }}">Articles</a></li>
-            <li><a href="{{ route('library') }}">Library</a></li>
+            <li><a href="{{ route('libraries') }}">Library</a></li>
         </ul>
     </div>
 </header>

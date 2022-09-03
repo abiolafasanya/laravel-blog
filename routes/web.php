@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\AcademicsController;
+use App\Http\Controllers\LibraryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,19 +29,24 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/signup', 'signup')->name('signup');
     Route::get('/logout', 'logout')->name('logout');
     Route::get('/verify', 'verification')->name('verify');
+    Route::get('/profile', function () {
+        return "hello post";
+    })->name('profile');
 });
 
-Route::get('/posts', function () {
-    return "hello post";
-})->name('posts');
 
-Route::get('/library', function () {
-    return "hello library";
-})->name('library');
+Route::controller(LibraryController::class)->group(function () {
+    Route::get('/library', 'index')->name('libraries'); 
+    Route::get('/library/{id}', 'show')->name('library');
+    // Route::get('/library/download', 'library.download')->name('library.download');
+    Route::get('/libraries', 'googleBooks')->name('books');
+});
 
-Route::get('/profile', function () {
-    return "hello post";
-})->name('profile');
+Route::controller(AcademicsController::class)->group(function () {
+    Route::get('/academics', 'index')->name('academics');
+    Route::get('/academics/{id}', 'show')->name('academic');
+});
+
 
 Route::resource('articles', ArticlesController::class);
 

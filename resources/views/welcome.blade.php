@@ -22,7 +22,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 @foreach ($trendings as $trending)
                     <div class="py-2 px-5 bg-white rounded border">
-                        <img src="{{ $trending['urlToImage'] }}" class="rounded" alt="">
+                        <img src="{{ $trending['urlToImage'] }}" class="rounded w-full h-[200px] flex-shrink-0" alt="">
                         <h1 class="text-lg font-semibold">{{ $trending['title'] }}</h1>
                         <p class="text-base text-black">
                             {{ $trending['description'] }}

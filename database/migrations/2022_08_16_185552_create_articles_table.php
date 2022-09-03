@@ -19,6 +19,7 @@ return new class extends Migration
             ->constrained()
             ->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->integer('category_id')->nullable();
             $table->string('title');
             $table->longText('body');
             $table->string('image')->nullable();

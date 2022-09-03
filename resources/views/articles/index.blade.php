@@ -14,11 +14,15 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 @foreach ($articles as $article)
                     <article class="card">
-                        <img class="w-full mb-2" src="{{ $article->image ? asset('storage/' . $article->image) : '' }}"
+                        <img class="w-full mb-2 max-h-64 h-full" src="{{ $article->image ? asset('storage/' . $article->image) : '' }}"
                             alt="">
                         <section class="p-5">
                             <h1 class="text-xl">{{ $article->title }}</h1>
-                            <p class="text-lead capitalize">{!! $article->body !!}</p>
+                            
+                            <p class="text-lead capitalize">
+                                {{-- {!! $article->body !!} --}}
+                                {!! Str::limit($article->body, 150) !!}
+                            </p>
                             <div class="flex justify-between">
                                 <span>Article by: {{ $article->user->name }}</span>
                                 <span class="text-sm">

@@ -27,11 +27,6 @@
         <x-success />
         {{ $slot }}
     </main>
-    {{-- <footer class=" w-full relative bottom-0 bg-gray-100">
-        <div id="footer" class="text-center p-2 border-t border-gray-200"></div>
-    </footer> --}}
-
-
 
 
     <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
