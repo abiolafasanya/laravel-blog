@@ -7,8 +7,8 @@
                     <img src="{{ $book['volumeInfo']['imageLinks']['medium'] }}" alt="{{ $book['volumeInfo']['title'] }}"
                         class="w-full">
                 @else
-                    <img src="{{ $book['volumeInfo']['imageLinks']['thumbnail'] }}" alt="{{ $book['volumeInfo']['title'] }}"
-                        class="w-full">
+                    <img src="{{ $book['volumeInfo']['imageLinks']['thumbnail'] }}"
+                        alt="{{ $book['volumeInfo']['title'] }}" class="w-full">
                 @endif
                 <div class="hidden md:visible">
 
@@ -17,9 +17,15 @@
                     </span>
 
                     <div class="flex flex-col">
-                        {{ $book['volumeInfo']['publisher'] }} ,
-                        {{ $book['volumeInfo']['publishedDate'] }} ,
-                        {{ $book['volumeInfo']['pageCount'] }} - pages
+                        @if (array_key_exists('publisher', $book['volumeInfo']))
+                            {{ $book['volumeInfo']['publisher'] }} ,
+                        @endif
+                        @if (array_key_exists('publishedDate', $book['volumeInfo']))
+                            {{ $book['volumeInfo']['publishedDate'] }} ,
+                        @endif
+                        @if (array_key_exists('pageCount', $book['volumeInfo']))
+                            {{ $book['volumeInfo']['pageCount'] }} - pages
+                        @endif
                     </div>
                     <div>
                         @if (array_key_exists('industryIdentifiers', $book['volumeInfo']))
